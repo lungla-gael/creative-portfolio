@@ -1,9 +1,14 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 
-const ItemLayout = ({ children, className }: any) => {
+interface ItemLayoutProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const ItemLayout = ({ children, className }: ItemLayoutProps) => {
   const [hovered, setHovered] = useState(false);
 
   const baseShadow = "inset 0 17px 5px -9px rgba(254,254,91,0.05)";
@@ -11,12 +16,10 @@ const ItemLayout = ({ children, className }: any) => {
 
   return (
     <motion.div
-
-        initial={{scale: 0}}
-        whileInView={{scale: 1}}
-        transition={{duration: 0.5}}
-        viewport={{once: true}}
-
+      initial={{ scale: 0 }}
+      whileInView={{ scale: 1 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
       className={clsx(
         // core styles
         "p-8 rounded-xl flex items-center justify-center border border-[rgb(var(--accent))]/30 border-solid space-y-8",
@@ -39,4 +42,4 @@ const ItemLayout = ({ children, className }: any) => {
   );
 };
 
-export default ItemLayout
+export default ItemLayout;

@@ -1,5 +1,6 @@
 import React from "react";
 import ItemLayout from "./ItemLayout";
+import Image from "next/image";
 
 
 const AboutDetails = () => {
@@ -35,7 +36,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-4 !p-0'}>
-              <img 
+              <Image 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
@@ -44,7 +45,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-8 !p-0'}>
-              <img 
+              <Image 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
@@ -53,7 +54,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-full'}>
-              <img 
+              <Image 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
@@ -62,15 +63,15 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-6 !p-0'}>
-              <img 
+              <Image 
                 className="w-full h-auto"
-                alt="Lungla Gael"
+                alt="Github Streak"
                 loading="lazy" 
-                src="https://github-readme-streak-stats.herokuapp.com?user=lungla-gael&theme=dark&hide_border=true&type=png&background=EB545400&ring=FEFE58&currStreakLabel=FEFE58" alt="GitHub Streak" />
+                src="https://github-readme-streak-stats.herokuapp.com?user=lungla-gael&theme=dark&hide_border=true&type=png&background=EB545400&ring=FEFE58&currStreakLabel=FEFE58"/>
             </ItemLayout>
 
             <ItemLayout className={'col-span-6 !p-0'}>
-              <img 
+              <Image 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"

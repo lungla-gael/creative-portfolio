@@ -1,11 +1,5 @@
 "use client"
-import { Inter } from "next/font/google";
 import HomeBtn from "../components/HomeBtn";
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 export default function SubPagesLayout({
   children,

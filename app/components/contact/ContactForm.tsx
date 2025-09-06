@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { Toaster, toast } from 'sonner';
 import { motion } from "framer-motion";
@@ -35,13 +35,13 @@ const ContactForm = () => {
     setMounted(true);
   }, []);
 
- const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
   
-  const sendEmail = (params: any) => {
+  const sendEmail = async (params: { name: string; email: string; message: string }) => {
     const toast_id = toast.loading("Sending your message, Please wait...")
 
     const service_id = process.env.NEXT_PUBLIC_SERVICE_ID ?? "";
@@ -62,19 +62,14 @@ const ContactForm = () => {
         () => toast.success("I have received your message, I will get back to you soon!",{
           id: toast_id
         }),
-        (error) => toast.error("There was an error sending your message, Please try again later!",{
+        (error) => toast.error(`There was an error sending your message, Please try again later! ${error}`,{
           id: toast_id
         }),
       );
   };
 
-  const onSubmit = (data: any) => {
-    const templateParams = {
-      name: data.Name,
-      email: data.Email,
-      message: data.Message,
-    };
-    sendEmail(templateParams);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    sendEmail({ name: data.Name, email: data.Email, message: data.Message });
   };
 
   // Render a layout-stable placeholder during SSR to avoid layout shift + hydration diffs

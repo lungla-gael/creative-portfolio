@@ -1,25 +1,38 @@
 "use client"
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
-import { Group } from 'three'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { useFrame, ThreeElements } from "@react-three/fiber";
+import * as THREE from "three";
+import { Group } from "three";
 
-export function Staff(props:any) {
-  const gltf: any = useGLTF('/models/staff-transformed.glb')
-  const { nodes, materials } = gltf
+// Define the structure of your GLTF model
+type GLTFResult = {
+  nodes: {
+    Wizard_Staff3_Wizard_Staff3_0: THREE.Mesh;
+    Wizard_Staff3_Wizard_Staff3_0_1: THREE.Mesh;
+    Wizard_Staff3_Wizard_Staff3_0_2: THREE.Mesh;
+    Wizard_Staff3_Wizard_Staff3_0_3: THREE.Mesh;
+    Wizard_Staff2_Wizard_Staff2_0: THREE.Mesh;
+  };
+  materials: {
+    Wizard_Staff3: THREE.Material;
+    Wizard_Staff2: THREE.Material;
+  };
+};
 
-  const modelRef = useRef<Group | null>(null)
-  const ROTATION_SPEED = 0.5
+export function Staff(props: ThreeElements["group"]) {
+  const { nodes, materials } = useGLTF(
+    "/models/staff-transformed.glb"
+  ) as unknown as GLTFResult;
+
+  const modelRef = useRef<Group | null>(null);
+  const ROTATION_SPEED = 0.5;
 
   useFrame((_, delta) => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += delta * ROTATION_SPEED
+      modelRef.current.rotation.y += delta * ROTATION_SPEED;
     }
-  })
-
-  // helper to cast node -> mesh
-  const mesh = (nodeName: string) => nodes[nodeName] as THREE.Mesh
+  });
 
   return (
     <group
@@ -32,7 +45,7 @@ export function Staff(props:any) {
       <mesh
         castShadow
         receiveShadow
-        geometry={mesh('Wizard_Staff3_Wizard_Staff3_0').geometry}
+        geometry={nodes.Wizard_Staff3_Wizard_Staff3_0.geometry}
         material={materials.Wizard_Staff3}
         position={[-0.041, 0.983, 0.768]}
         rotation={[0, Math.PI / 2, 0]}
@@ -41,7 +54,7 @@ export function Staff(props:any) {
       <mesh
         castShadow
         receiveShadow
-        geometry={mesh('Wizard_Staff3_Wizard_Staff3_0_1').geometry}
+        geometry={nodes.Wizard_Staff3_Wizard_Staff3_0_1.geometry}
         material={materials.Wizard_Staff3}
         position={[-0.041, 0.983, 0.768]}
         rotation={[0, Math.PI / 2, 0]}
@@ -50,7 +63,7 @@ export function Staff(props:any) {
       <mesh
         castShadow
         receiveShadow
-        geometry={mesh('Wizard_Staff3_Wizard_Staff3_0_2').geometry}
+        geometry={nodes.Wizard_Staff3_Wizard_Staff3_0_2.geometry}
         material={materials.Wizard_Staff3}
         position={[-0.041, 0.983, 0.768]}
         rotation={[0, Math.PI / 2, 0]}
@@ -59,7 +72,7 @@ export function Staff(props:any) {
       <mesh
         castShadow
         receiveShadow
-        geometry={mesh('Wizard_Staff3_Wizard_Staff3_0_3').geometry}
+        geometry={nodes.Wizard_Staff3_Wizard_Staff3_0_3.geometry}
         material={materials.Wizard_Staff3}
         position={[-0.041, 0.983, 0.768]}
         rotation={[0, Math.PI / 2, 0]}
@@ -75,7 +88,7 @@ export function Staff(props:any) {
         scale={0.04}
       />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/staff-transformed.glb')
+useGLTF.preload("/models/staff-transformed.glb");
