@@ -1,6 +1,5 @@
 import React from "react";
 import ItemLayout from "./ItemLayout";
-import Image from "next/image";
 
 
 const AboutDetails = () => {
@@ -36,7 +35,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-4 !p-0'}>
-              <Image 
+              <img 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
@@ -45,7 +44,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-8 !p-0'}>
-              <Image 
+              <img 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
@@ -54,7 +53,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-full'}>
-              <Image 
+              <img 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
@@ -63,7 +62,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-6 !p-0'}>
-              <Image 
+              <img 
                 className="w-full h-auto"
                 alt="Github Streak"
                 loading="lazy" 
@@ -71,7 +70,7 @@ const AboutDetails = () => {
             </ItemLayout>
 
             <ItemLayout className={'col-span-6 !p-0'}>
-              <Image 
+              <img 
                 className="w-full h-auto"
                 alt="Lungla Gael"
                 loading="lazy"
